@@ -1,0 +1,280 @@
+<!doctype html>
+<html dir="ltr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="generator" content="HTML5 Portfolio">
+	<title>Chhavi's Portfolio</title>
+    <meta name="description" content="Chhavi's Portfolio">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Chhavi's Portfolio">
+    <meta property="og:description" content="Chhavi's Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Chhavi's Portfolio">
+    <meta name="twitter:description" content="Chhavi's Portfolio">
+	
+	<style>
+		/* Basic reset and setup */
+		html, body, #main {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+		
+		:root {
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}
+		
+		* {
+			box-sizing: border-box;
+			-webkit-font-smoothing: inherit;
+		}
+		
+		h1, h2, h3, h4, h5, h6, p, figure {
+			margin: 0;
+		}
+		
+		body, input, textarea, select, button {
+			font-family: sans-serif;
+			font-size: 12px;
+		}
+		
+		/* Color scheme */
+		body {
+			--primary-color: #303030;
+			--secondary-color: #050505;
+			--background-color: #fff;
+			--text-color: #fff;
+			--muted-color: #8f8f8f;
+			background: rgb(255, 255, 255);
+		}
+		
+		@media (prefers-color-scheme: dark) {
+			body {
+				--primary-color: #fff;
+				--text-color: #303030;
+				--muted-color: #b5b5b5;
+			}
+		}
+		
+		/* Fonts */
+		@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@600;700;800&family=Antonio:wght@700&family=Archivo+Black&display=swap');
+		
+		/* Layout */
+		#main {
+			min-height: 100vh;
+			width: auto;
+		}
+		
+		.hero {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-height: 100vh;
+			position: relative;
+		}
+		
+		/* Portfolio text effect */
+		.portfolio-text {
+			position: relative;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: max-content;
+			min-width: max-content;
+		}
+		
+		.portfolio-main {
+			position: relative;
+			text-transform: uppercase;
+			color: transparent;
+			cursor: pointer;
+			user-select: none;
+			font-family: "Inter", sans-serif;
+			font-size: 120px;
+			font-style: normal;
+			font-weight: 700;
+			letter-spacing: 0em;
+			line-height: 1em;
+		}
+		
+		.portfolio-overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			color: rgb(255, 245, 245);
+			overflow: hidden;
+			transition: transform 500ms ease;
+			pointer-events: none;
+		}
+		
+		.portfolio-overlay.top {
+			clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+			transform: translateY(0);
+		}
+		
+		.portfolio-overlay.bottom {
+			clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+			transform: translateY(0);
+		}
+		
+		.portfolio-overlay:hover {
+			transform: translateY(-100%);
+		}
+		
+		.chhavi-reveal {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			color: rgb(0, 0, 0);
+			background-color: rgb(106, 113, 223);
+			text-align: center;
+			transition: transform 500ms ease, opacity 300ms ease;
+			transform-origin: center;
+			transform: translate(-50%, -50%) scaleY(0);
+			opacity: 0;
+			white-space: nowrap;
+			padding: 4px 12px;
+			pointer-events: none;
+			font-family: "Inter", sans-serif;
+			font-size: 60px;
+			font-style: normal;
+			font-weight: 500;
+			letter-spacing: 0.7em;
+			line-height: 1em;
+		}
+		
+		.portfolio-text:hover .chhavi-reveal {
+			transform: translate(-50%, -50%) scaleY(1);
+			opacity: 1;
+		}
+		
+		/* Social links */
+		.social-links {
+			position: fixed;
+			bottom: 40px;
+			right: 40px;
+			display: flex;
+			gap: 20px;
+			z-index: 100;
+		}
+		
+		.social-button {
+			width: 200px;
+			height: 80px;
+			border: none;
+			border-radius: 12px;
+			background: linear-gradient(
+				64.14deg,
+				rgb(59, 130, 246) 0%,
+				#5b8ef7 10%,
+				rgb(139, 92, 246) 25%,
+				#a78ff7 40%,
+				#b87cf6 50%,
+				#c96ff5 60%,
+				rgb(236, 72, 153) 75%,
+				#f060a8 85%,
+				#ea5ba3 92%,
+				rgb(59, 130, 246) 100%
+			);
+			transition: all 0.5s ease;
+			transform: scale(1);
+			box-sizing: border-box;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: white;
+			font-weight: 600;
+			font-size: 20px;
+			text-decoration: none;
+		}
+		
+		.social-button:hover {
+			transform: scale(1.05);
+		}
+		
+		/* Thank you section */
+		.thank-you {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+		}
+		
+		.thank-you h1 {
+			font-family: "Manrope", sans-serif;
+			font-size: 100px;
+			font-weight: 800;
+			letter-spacing: -0.02em;
+			line-height: 1em;
+			color: rgb(255, 255, 255);
+			margin-bottom: 20px;
+		}
+		
+		/* Responsive */
+		@media (max-width: 768px) {
+			.portfolio-main {
+				font-size: 60px;
+			}
+			
+			.chhavi-reveal {
+				font-size: 30px;
+			}
+			
+			.social-links {
+				flex-direction: column;
+				gap: 10px;
+				right: 20px;
+				bottom: 20px;
+			}
+			
+			.social-button {
+				width: 150px;
+				height: 60px;
+				font-size: 16px;
+			}
+			
+			.thank-you h1 {
+				font-size: 60px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<div class="hero">
+			<div class="portfolio-text">
+				<div class="portfolio-main">PORTFOLIO</div>
+				<div class="portfolio-overlay top">PORTFOLIO</div>
+				<div class="portfolio-overlay bottom">PORTFOLIO</div>
+				<div class="chhavi-reveal">CHHAVI</div>
+			</div>
+		</div>
+		
+		<div class="social-links">
+			<a href="mailto:chhavi@example.com" class="social-button">Gmail</a>
+			<a href="https://linkedin.com/in/chhavi" class="social-button">LinkedIn</a>
+			<a href="https://chhavi-portfolio.com" class="social-button">Website</a>
+			<a href="https://github.com/chhavi" class="social-button">Github</a>
+		</div>
+		
+		<div class="thank-you">
+			<h1>Thank you</h1>
+		</div>
+	</div>
+	
+	<script>
+		// Scroll to top when page loads
+		window.addEventListener('load', function() {
+			window.scrollTo(0, 0);
+		});
+		
+		// Add smooth scrolling behavior
+		document.documentElement.style.scrollBehavior = 'smooth';
+	</script>
+</body>
+</html>
