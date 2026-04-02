@@ -198,5 +198,24 @@
 	
     
     
+<script>
+		// Force scroll to top after all content loads
+		window.addEventListener('load', function() {
+			setTimeout(function() {
+				window.scrollTo(0, 0);
+				document.documentElement.scrollTop = 0;
+				document.body.scrollTop = 0;
+			}, 100);
+		});
+		
+		// Also try on DOM content loaded
+		document.addEventListener('DOMContentLoaded', function() {
+			setTimeout(function() {
+				window.scrollTo(0, 0);
+				document.documentElement.scrollTop = 0;
+				document.body.scrollTop = 0;
+			}, 50);
+		});
+	</script>
 </body>
 </html>
